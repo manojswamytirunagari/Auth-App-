@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API = process.env.REACT_APP_API_URL;
+
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,15 +14,15 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/auth/register",
+        `${API}/api/auth/register`,
         { email, password },
         { withCredentials: true }
       );
-      setMessage(" Registration successful! User ID: " + res.data.userId);
+      setMessage("Registration successful! User ID: " + res.data.userId);
       setEmail("");
       setPassword("");
     } catch (err) {
-      setMessage( (err.response?.data?.error || "Registration failed"));
+      setMessage(err.response?.data?.error || "Registration failed");
     }
   };
 

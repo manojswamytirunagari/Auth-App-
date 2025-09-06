@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const API = process.env.REACT_APP_API_URL;
+
 const Dashboard = ({ onLogout }) => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/auth/dashboard", {
+        const res = await axios.get(`${API}/api/auth/dashboard`, {
           withCredentials: true,
         });
         setMessage(res.data.message);
@@ -20,7 +22,7 @@ const Dashboard = ({ onLogout }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:4000/api/auth/logout", {}, { withCredentials: true });
+      await axios.post(`${API}/api/auth/logout`, {}, { withCredentials: true });
       if (onLogout) onLogout();
     } catch (err) {
       console.error("Logout failed", err);
