@@ -1,0 +1,117 @@
+/* Full viewport */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Gradient background & center container */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #d0f0c0 0%, #c0e0ff 100%);
+}
+
+/* Forms container */
+.app-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Forms wrapper */
+.forms-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  max-width: 900px;
+}
+
+/* Card style */
+.form-card, .dashboard-card {
+  flex: 1 1 350px;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card:hover, .dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Headings & text */
+.form-card h2, .dashboard-card h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+.form-card p, .dashboard-card p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Inputs */
+.form-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-card input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Buttons */
+.form-card button, .dashboard-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-card button:hover, .dashboard-card button:hover {
+  transform: translateY(-2px);
+}
+
+/* Button colors */
+.register-button { background-color: #4caf50; color: white; }
+.register-button:hover { background-color: #45a049; }
+
+.login-button { background-color: #2196f3; color: white; }
+.login-button:hover { background-color: #0b7dda; }
+
+.dashboard-card button { background-color: #f44336; color: white; }
+.dashboard-card button:hover { background-color: #da190b; }
+
+/* Mobile: stack vertically */
+@media (max-width: 800px) {
+  .forms-wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
