@@ -8,6 +8,7 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -18,22 +19,25 @@ const Login = ({ onLogin }) => {
         { withCredentials: true }
       );
       if (res.data.success) {
-        setMessage("Login successful!");
-        setEmail("");
-        setPassword("");
-        onLogin();
-      }
+  setMessage("Login successful!");
+  setEmail("");
+  setPassword("");
+  setTimeout(() => {
+    onLogin();
+  }, 500);
+}
     } catch (err) {
       setMessage(err.response?.data?.error || "Login failed");
     }
   };
 
   useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => setMessage(""), 10000);
-      return () => clearTimeout(timer);
-    }
-  }, [message]);
+  if (message) {
+    const timer = setTimeout(() => setMessage(""), 2000); // keep visible longer
+    return () => clearTimeout(timer);
+  }
+}, [message]);
+
 
   return (
     <div className="form-card">
